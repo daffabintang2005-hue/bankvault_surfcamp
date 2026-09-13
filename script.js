@@ -432,16 +432,8 @@ function initScrollProgress() {
 
 function initActivityVideos() {
   document.querySelectorAll('.activity-video-frame').forEach((frame) => {
-    const poster = frame.querySelector('.video-poster');
     const video = frame.querySelector('video');
-    if (!poster || !video) return;
-
-    poster.addEventListener('click', () => {
-      frame.classList.add('is-playing');
-      video.play().catch(() => {
-        frame.classList.remove('is-playing');
-      });
-    });
-    video.addEventListener('pause', () => frame.classList.remove('is-playing'));
+    if (!video) return;
+    video.play().catch(() => {});
   });
 }
