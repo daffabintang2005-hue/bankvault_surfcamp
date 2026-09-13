@@ -225,6 +225,8 @@ document.addEventListener('DOMContentLoaded', () => {
 function initNavigation() {
   const topbar = document.querySelector('.topbar');
   const navLinks = document.querySelectorAll('.nav-link');
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navCenter = document.querySelector('.nav-center');
   const path = window.location.pathname.split('/').pop() || 'index.html';
 
   navLinks.forEach((link) => {
@@ -244,6 +246,15 @@ function initNavigation() {
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  menuToggle?.addEventListener('click', () => {
+    const isOpen = navCenter?.classList.toggle('is-open') ?? false;
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+  navLinks.forEach((link) => link.addEventListener('click', () => {
+    navCenter?.classList.remove('is-open');
+    menuToggle?.setAttribute('aria-expanded', 'false');
+  }));
 
 }
 
