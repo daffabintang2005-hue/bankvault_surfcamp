@@ -1170,12 +1170,54 @@ p { margin: 0 0 18px; color: var(--muted); }
   background: var(--surface);
   box-shadow: var(--card-shadow);
 }
+.activity-video-frame {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--primary);
+}
 .activity-video-card video {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: 100%;
   background: var(--primary);
   object-fit: cover;
+}
+.video-poster {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: var(--primary);
+  cursor: pointer;
+}
+.video-poster img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.video-play {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  padding-left: 4px;
+  border-radius: 50%;
+  background: rgba(8,59,76,0.86);
+  color: #fff;
+  font-size: 1.2rem;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+.activity-video-frame.is-playing .video-poster {
+  display: none;
 }
 .activity-video-content {
   display: flex;
