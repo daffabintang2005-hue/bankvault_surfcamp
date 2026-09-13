@@ -409,6 +409,9 @@ function initRevealAnimations() {
   }, { threshold: 0.12 });
 
   revealTargets.forEach((item) => observer.observe(item));
+  window.setTimeout(() => {
+    revealTargets.forEach((item) => item.classList.add('is-visible'));
+  }, 900);
 }
 
 function initScrollProgress() {
